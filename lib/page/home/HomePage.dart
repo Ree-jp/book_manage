@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -8,17 +10,78 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Container(
-            height: 50,
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(40),
-                bottomLeft: Radius.circular(40),
+          Column(
+            children: [
+              Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(40),
+                    bottomLeft: Radius.circular(40),
+                  ),
+                ),
               ),
-            ),
+            ],
+          ),
+          Column(
+            children: [
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: 20,
+                        ),
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(-10, 10),
+                              color:
+                                  Theme.of(context).shadowColor.withOpacity(.3),
+                              blurRadius: 30,
+                            ),
+                          ],
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              "assets/images/image_3.jpg",
+                              height: 300,
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 15),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "読んだ",
+                                    style: TextStyle(
+                                      color: Colors.orange,
+                                    ),
+                                  ),
+                                  Text(
+                                    "買う",
+                                    style: TextStyle(
+                                      color: Colors.cyanAccent,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ],
       ),
