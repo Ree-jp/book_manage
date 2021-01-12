@@ -12,74 +12,26 @@ class HomePage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Column(
-            children: [
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(40),
-                    bottomLeft: Radius.circular(40),
-                  ),
-                ),
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(40),
+                bottomLeft: Radius.circular(40),
               ),
-            ],
+            ),
           ),
           Column(
             children: [
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                          top: 20,
-                        ),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).cardColor,
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(-10, 10),
-                              color:
-                                  Theme.of(context).shadowColor.withOpacity(.3),
-                              blurRadius: 30,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/images/image_3.jpg",
-                              height: 300,
-                            ),
-                            Container(
-                              padding: EdgeInsets.symmetric(vertical: 15),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "読んだ",
-                                    style: TextStyle(
-                                      color: Colors.orange,
-                                    ),
-                                  ),
-                                  Text(
-                                    "買う",
-                                    style: TextStyle(
-                                      color: Colors.cyanAccent,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    BookCard(imagePath: "assets/images/image_1.jpg"),
+                    BookCard(imagePath: "assets/images/image_2.jpg"),
+                  ],
+                ),
               ),
             ],
           ),
@@ -150,6 +102,64 @@ class HomePage extends StatelessWidget {
                 color: Colors.green,
               ),
               title: Text("メニュー")),
+        ],
+      ),
+    );
+  }
+}
+
+class BookCard extends StatelessWidget {
+  const BookCard({
+    Key key,
+    this.imagePath,
+  }) : super(key: key);
+
+  final String imagePath;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(
+        top: 10,
+        left: 20,
+      ),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(-10, 10),
+            color: Theme.of(context).shadowColor.withOpacity(.3),
+            blurRadius: 30,
+          ),
+        ],
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
+      child: Column(
+        children: [
+          Image.asset(
+            imagePath,
+            height: 300,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 15),
+            child: Row(
+              children: [
+                Text(
+                  "読んだ",
+                  style: TextStyle(
+                    color: Colors.orange,
+                  ),
+                ),
+                Text(
+                  "買う",
+                  style: TextStyle(
+                    color: Colors.cyanAccent,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

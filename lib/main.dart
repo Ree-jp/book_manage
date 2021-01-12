@@ -15,9 +15,14 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.transparent,
     ));
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Book Manage',
-      theme: ThemeData.light().copyWith(primaryColor: Colors.lightGreenAccent),
-      darkTheme: ThemeData.dark().copyWith(primaryColor: Colors.lightGreen),
+      theme: ThemeData.light().copyWith(
+        primaryColor: Colors.lightGreenAccent,
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        primaryColor: Colors.lightGreen,
+      ),
       home: HomePage(),
     );
   }
