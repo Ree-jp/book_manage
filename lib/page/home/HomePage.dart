@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'dart:math';
 
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/material.dart';
@@ -7,31 +7,51 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-      ),
-      body: Stack(
+      // appBar: AppBar(
+      //   elevation: 0,
+      // ),
+      body: Column(
         children: [
           Container(
-            height: 50,
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(40),
-                bottomLeft: Radius.circular(40),
+            height: 100,
+            color: Theme.of(context).primaryColor,
+            child: Center(
+              child: Container(
+                height: 40,
+                width: MediaQuery.of(context).size.width * .9,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
               ),
             ),
           ),
-          Column(
+          Stack(
             children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    BookCard(imagePath: "assets/images/image_1.jpg"),
-                    BookCard(imagePath: "assets/images/image_2.jpg"),
-                  ],
+              Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(40),
+                    bottomLeft: Radius.circular(40),
+                  ),
                 ),
+              ),
+              Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        BookCard(imagePath: "assets/images/image_1.jpg"),
+                        BookCard(imagePath: "assets/images/image_2.jpg"),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -120,17 +140,18 @@ class BookCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        top: 10,
+        top: 15,
+        bottom: 15,
         left: 20,
       ),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: Theme.of(context).cardColor,//TODO 表紙の色合いによって変えたい
         boxShadow: [
           BoxShadow(
             offset: Offset(-10, 10),
             color: Theme.of(context).shadowColor.withOpacity(.3),
-            blurRadius: 30,
+            blurRadius: 50,
           ),
         ],
         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -145,18 +166,7 @@ class BookCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 15),
             child: Row(
               children: [
-                Text(
-                  "読んだ",
-                  style: TextStyle(
-                    color: Colors.orange,
-                  ),
-                ),
-                Text(
-                  "買う",
-                  style: TextStyle(
-                    color: Colors.cyanAccent,
-                  ),
-                ),
+                //TODO
               ],
             ),
           ),
