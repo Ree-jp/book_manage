@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Book Manage',
       theme: ThemeData.light().copyWith(
-        primaryColor: Colors.lightGreenAccent,
+        primaryColor: Color(0xffff6e6c),
       ),
       darkTheme: ThemeData.dark().copyWith(
-        primaryColor: Colors.lightGreen,
+        primaryColor: Color(0xff67568c),
       ),
       home: HomePage(),
     );
